@@ -16,6 +16,6 @@ if uri:
   }
   r = api.node(params=params)
 
-  print(r.json())
+  print r.json()
 else:
-  print('Please Set the dkan URL as an ENVIRONMENT variable')
+  print 'Please Set the dkan URL as an ENVIRONMENT variable'

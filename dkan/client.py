@@ -11,6 +11,8 @@ import os
 import json
 import requests
 
+debug = True
+
 class LoginError(Exception):
   pass
 
@@ -118,14 +120,16 @@ class DatasetAPI:
       'create': self.post,
       'delete': self.delete
     }
-    if not action in list(action_map.keys()):
-      raise ValueError('action parameter should be one of the following: %s' % ', '.join(list(action_map.keys())))
+    if action not in action_map.keys():
+      raise ValueError('action parameter should be one of the following: %s' % ', '.join(action_map.keys()))
     if action not in ['index', 'retrieve']:
       kwargs['headers'] = self.headers.copy()
       kwargs['headers']['Content-Type'] = 'application/json'
-      if 'data' in list(kwargs.keys()):
+      if 'data' in kwargs.keys():
         kwargs['data'] = json.dumps(kwargs['data'])
-    return action_map[action](uri, **kwargs)
+    result = action_map[action](uri, **kwargs)
+    print(result.json())
+    return result
 
   def get(self, uri, **kwargs):
     return self.request(uri, 'GET', **kwargs)

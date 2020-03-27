@@ -8,8 +8,8 @@ with open('requirements.txt') as f:
 
 setup(
     name='pydkan',
-    version='0.1',
-    author=u'NuCivic',
+    version='0.2',
+    author='NuCivic',
     author_email='devops@nucivic.com',
     license='BSD licence, see LICENCE.txt',
     description='Python Client for dkan dataset api',

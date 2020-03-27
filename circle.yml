@@ -1,8 +1,8 @@
 machine:
   python:
-    version: '2.7.10'
+    version: '3.8.2'
   php:
-    version: '5.5.11'
+    version: '7.2.29'
   environment:
     DATABASE_URL: mysql://ubuntu:@127.0.0.1:3306/circle_test
     COMPOSER_PATH: $HOME/.config/composer/vendor/bin

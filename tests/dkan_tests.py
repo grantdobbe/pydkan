@@ -1,5 +1,5 @@
-import os, unittest
-from .client import DatasetAPI
+import os, unittest, pprint
+from dkan.client import DatasetAPI
 
 class TestDatasetAPI(unittest.TestCase):
     def setUp(self):
@@ -23,6 +23,7 @@ class TestDatasetAPI(unittest.TestCase):
         payload = {
             'parameters[type]': node_type
         }
+        print(payload)
         r = self.api.node(params=payload)
         self.assertEqual(r.status_code, 200)
         return r.json()
@@ -33,8 +34,11 @@ class TestDatasetAPI(unittest.TestCase):
         return types
 
     def _test_list_nodes(self, node_type):
+        print(node_type)
         nodes = self._get_nodes_of_type(node_type)
+        print(nodes)
         types = self._get_nodes_types(nodes)
+        print(types)
         # Test for dataset type
         self.assertEqual(types[0], node_type)
         self.assertEqual(len(types), 1)

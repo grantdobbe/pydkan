@@ -1,4 +1,4 @@
-ahoyapi: v1
+ahoyapi: v2
 version: 0.0.0
 commands:
   dkan:
@@ -15,7 +15,7 @@ commands:
         exit 0
       fi
   python:
-    usage:  
+    usage:
     cmd: |
       FILE=".ahoy/.dkan"
       if [ ! -f $FILE ]; then

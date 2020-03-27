@@ -1,5 +1,5 @@
-ahoyapi: v1
-version: 0.0.0
+ahoyapi: v2
+version: 0.0.1
 commands:
   env:
     cmd: |
@@ -48,7 +48,7 @@ commands:
       DANGLING=`docker images -f "dangling=true" -q`
       if [ ! -z "$EXITED" ]
       then
-        docker rm -v $EXITED  
+        docker rm -v $EXITED
       fi
       if [ ! -z "$DANGLING" ]
       then
