@@ -118,12 +118,12 @@ class DatasetAPI:
       'create': self.post,
       'delete': self.delete
     }
-    if not action in list(action_map.keys()):
-      raise ValueError('action parameter should be one of the following: %s' % ', '.join(list(action_map.keys())))
+    if not action in action_map.keys():
+      raise ValueError('action parameter should be one of the following: %s' % ', '.join(action_map.keys()))
     if action not in ['index', 'retrieve']:
       kwargs['headers'] = self.headers.copy()
       kwargs['headers']['Content-Type'] = 'application/json'
-      if 'data' in list(kwargs.keys()):
+      if 'data' in kwargs.keys():
         kwargs['data'] = json.dumps(kwargs['data'])
     return action_map[action](uri, **kwargs)
 
@@ -145,7 +145,7 @@ class DatasetAPI:
     :param uri: The URI for the http request
     :rtype: GET/POST/PUT/DELETE
     """
-    if not 'headers' in list(kwargs.keys()):
+    if not 'headers' in kwargs.keys():
       kwargs['headers'] = self.headers
     kwargs['cookies'] = self.cookies
     r = requests.Request(rtype, uri, **kwargs)
@@ -180,10 +180,10 @@ class DatasetAPI:
 
     :param req: the http request object
     """
-    print(('{}\n{}\n{}\n\n{}\n{}\n'.format(
+    print('{}\n{}\n{}\n\n{}\n{}\n'.format(
         '-----------START-----------',
         req.method + ' ' + req.url,
-        '\n'.join('{}: {}'.format(k, v) for k, v in list(req.headers.items())),
+        '\n'.join('{}: {}'.format(k, v) for k, v in req.headers.items()),
         req.body,
         '------------END------------'
-    )))
+    ))

@@ -1,5 +1,5 @@
 import os, unittest
-from .client import DatasetAPI
+from client import DatasetAPI
 
 class TestDatasetAPI(unittest.TestCase):
     def setUp(self):
@@ -90,7 +90,7 @@ class TestDatasetAPI(unittest.TestCase):
         update = {
             'title': '%s updated' % data['title'],
         }
-        self.assertTrue('nid' in list(original_node.keys()))
+        self.assertTrue('nid' in original_node.keys())
         node = self.api.node('update', node_id=original_node['nid'], data=update)
         self.assertEqual(node.status_code, 200)
         node = self.api.node('retrieve', node_id=original_node['nid']).json()
@@ -143,7 +143,7 @@ class TestDatasetAPI(unittest.TestCase):
     def _test_delete_node(self, data):
         count = len(self._get_nodes_of_type(data['type']))
         node = self._test_create_node(data)
-        self.assertTrue('nid' in list(node.keys()))
+        self.assertTrue('nid' in node.keys())
         delete = self.api.node('delete', node_id=node['nid'])
         self.assertEqual(delete.status_code, 200)
         self.cleanup.remove(node['nid'])
