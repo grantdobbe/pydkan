@@ -1,6 +1,12 @@
 import os
 import json
-from dkan.client import DatasetAPI
+
+try:
+    from dkan.client import DatasetAPI
+except ImportError:
+    import sys
+    sys.path.append('../')
+    from dkan.client import DatasetAPI
 
 uri = os.environ.get('DKAN_URI', False)
 user = os.environ.get('DKAN_USER', 'admin')
@@ -11,14 +17,14 @@ if uri:
   payload = {'parameters[type]': 'resource'}
   nodes = api.node(params=payload).json()
   resource = nodes[0]
-  print resource
+  print(resource)
   csv = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.',
                      'data', 'tension_sample_data.csv')
   # Attach the file to the resource node
   r = api.attach_file_to_node(csv, resource['nid'], 'field_upload')
-  print r.status_code
-  print r. text
+  print(r.status_code)
+  print(r. text)
   resource = api.node('retrieve', node_id=resource['nid'])
-  print resource.json()['field_upload']
+  print(resource.json()['field_upload'])
 else:
-  print 'Please Set the dkan URL as an ENVIRONMENT variable'  
+  print('Please Set the dkan URL as an ENVIRONMENT variable')

@@ -1,6 +1,12 @@
 import os
 import json
-from dkan.client import DatasetAPI
+
+try:
+    from dkan.client import DatasetAPI
+except ImportError:
+    import sys
+    sys.path.append('../')
+    from dkan.client import DatasetAPI
 
 uri = os.environ.get('DKAN_URI', False)
 user = os.environ.get('DKAN_USER', 'admin')
@@ -13,7 +19,7 @@ if uri:
       'type': 'dataset'
   }
   dataset = api.node('create', data=data)
-  print dataset.status_code
-  print dataset.text
+  print(dataset.status_code)
+  print(dataset.text)
 else:
-  print 'Please Set the dkan URL as an ENVIRONMENT variable'
+  print('Please Set the dkan URL as an ENVIRONMENT variable')
