@@ -1,4 +1,4 @@
-import os, unittest, pprint
+import os, unittest
 from dkan.client import DatasetAPI
 
 class TestDatasetAPI(unittest.TestCase):
