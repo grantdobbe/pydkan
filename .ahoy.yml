@@ -3,7 +3,9 @@ usage: DKAN cli app for development using ahoy.
 commands:
   docker:
     usage: A series of docker commands (experimental)
-    import: .ahoy/docker.ahoy.yml
+    imports:
+      - .ahoy/docker.ahoy.yml
   api:
     usage:
-    import: .ahoy/api.ahoy.yml
+    imports:
+      - .ahoy/api.ahoy.yml

@@ -22,7 +22,7 @@ commands:
         ahoy api dkan
       fi
       DKAN_URI=`cat $FILE`
-      ahoy docker compose run -e DKAN_URI=$DKAN_URI pydkan ipython {{args}}
+      ahoy docker compose run -e DKAN_URI=$DKAN_URI pydkan ipython $@
   prompt:
     usage: Steps in the pydkan container
     cmd: |

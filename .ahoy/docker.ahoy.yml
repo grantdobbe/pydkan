@@ -1,5 +1,5 @@
 ahoyapi: v2
-version: 0.0.1
+version: 0.0.0
 commands:
   env:
     cmd: |
@@ -36,11 +36,11 @@ commands:
   build:
     usage: Rebuild containers images
     cmd: |
-      ahoy docker compose build {{args}}
+      ahoy docker compose build $@
   compose:
     usage: Abstraction for docker-compose
     cmd: |
-      docker-compose -f docker-compose.yml -p "${PWD##*/}" {{args}}
+      docker-compose -f docker-compose.yml -p "${PWD##*/}" $@
   cleanup:
     usage: Clean ups docker unused images and volumes. See http://blog.yohanliyanage.com/2015/05/docker-clean-up-after-yourself/.
     cmd: |
