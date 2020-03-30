@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 dkan.client
 ~~~~~~~~~~~~~~~~~
@@ -125,9 +123,7 @@ class DatasetAPI:
       kwargs['headers']['Content-Type'] = 'application/json'
       if 'data' in kwargs.keys():
         kwargs['data'] = json.dumps(kwargs['data'])
-    result = action_map[action](uri, **kwargs)
-    print(result.json())
-    return result
+    return action_map[action](uri, **kwargs)
 
   def get(self, uri, **kwargs):
     return self.request(uri, 'GET', **kwargs)
