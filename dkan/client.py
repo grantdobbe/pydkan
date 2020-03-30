@@ -11,8 +11,6 @@ import os
 import json
 import requests
 
-debug = True
-
 class LoginError(Exception):
   pass
 
